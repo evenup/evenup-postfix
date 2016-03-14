@@ -14,9 +14,9 @@ readme_directory = no
 
 # TODO - should this be a generic name for relay hosts?
 <% if @myhostname -%>
-myhostname = <%= scope.lookupvar('::fqdn') %>
-<% else %>
 myhostname = <%= @myhostname %>
+<% else %>
+myhostname = <%= scope.lookupvar('::fqdn') %>
 <% end %>
 smtpd_banner = $myhostname ESMTP
 
