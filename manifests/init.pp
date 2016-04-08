@@ -83,6 +83,10 @@ class postfix (
   $smtpd_sender_restrictions    = $postfix::params::smtpd_sender_restrictions,
   $smtpd_recipient_restrictions = $postfix::params::smtpd_recipient_restrictions,
   $smtpd_data_restrictions      = $postfix::params::smtpd_data_restrictions,
+  $inet_interfaces              = $postfix::params::inet_interfaces,
+  $inet_protocols               = $postfix::params::inet_protocols,
+  $myhostname                   = $postfix::params::myhostname,
+  $myorigin                     = $postfix::params::myorigin,
 ) inherits postfix::params {
 
   validate_bool($smtp_relay)
@@ -101,7 +105,11 @@ class postfix (
   validate_string($smtpd_sender_restrictions)
   validate_string($smtpd_recipient_restrictions)
   validate_string($smtpd_data_restrictions)
-
+  validate_string($inet_interfaces)
+  validate_string($inet_protocols)
+  validate_string($myhostname)
+  validate_string($myorigin)
+  
   class { '::postfix::install': } ->
   class { '::postfix::config': } ~>
   class { '::postfix::service': }

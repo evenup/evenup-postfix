@@ -18,6 +18,10 @@ class postfix::params {
   $smtpd_sender_restrictions    = undef
   $smtpd_recipient_restrictions = 'permit_mynetworks, reject_unauth_destination'
   $smtpd_data_restrictions      = 'reject_unauth_pipelining'
+  $inet_interfaces              = 'all'
+  $inet_protocols               = 'ipv4'
+  $myhostname                   = undef
+  $myorigin                     = $::domain
 
   case $::osfamily {
     'RedHat': {

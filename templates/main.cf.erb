@@ -2,7 +2,7 @@
 #
 # See /usr/share/postfix/main.cf.dist for a commented, more complete version
 #
-smtpd_banner = $myhostname ESMTP
+
 biff = no
 
 # appending .domain is the MUA's job.
@@ -13,15 +13,21 @@ append_dot_mydomain = no
 readme_directory = no
 
 # TODO - should this be a generic name for relay hosts?
+<% if @myhostname -%>
+myhostname = <%= @myhostname %>
+<% else %>
 myhostname = <%= scope.lookupvar('::fqdn') %>
+<% end %>
+smtpd_banner = $myhostname ESMTP
+
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 mydomain = <%= @mydomain %>
-myorigin = $mydomain
+myorigin = <%= @myorigin %>
 mydestination = <%= scope.lookupvar('::fqdn') -%>, localhost.<%= scope.lookupvar('::domain') -%>, localhost
 <% if @smtp_relay -%>
 mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 <%= @relay_networks %>
-inet_interfaces = all
+inet_interfaces = <%= @inet_interfaces %>
 <% else %>
 mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 relayhost = <%= @relay_host -%>:<%= @relay_port %>
@@ -43,7 +49,7 @@ smtp_tls_CAfile = <%= @tls_bundle %>
 <% end -%>
 mailbox_size_limit = 0
 recipient_delimiter = +
-inet_protocols = ipv4
+inet_protocols = <%= @inet_protocols %>
 
 # Allow connections from trusted networks only.
 smtpd_client_restrictions = <%= @smtpd_client_restrictions %>

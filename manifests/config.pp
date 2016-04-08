@@ -21,6 +21,10 @@ class postfix::config (
   $smtpd_sender_restrictions    = $::postfix::smtpd_sender_restrictions,
   $smtpd_recipient_restrictions = $::postfix::smtpd_recipient_restrictions,
   $smtpd_data_restrictions      = $::postfix::smtpd_data_restrictions,
+  $inet_interfaces              = $::postfix::inet_interfaces,
+  $inet_protocols               = $::postfix::inet_protocols,
+  $myhostname                   = $::postfix::myhostname,
+  $myorigin                     = $::postfix::myorigin,
 ) {
 
   file { '/etc/postfix/master.cf':

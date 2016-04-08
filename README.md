@@ -152,6 +152,27 @@ Default: 'permit_mynetworks, reject_unauth_destination'
 String Value of the smtpd_data_restrictions parameter.  
 Default: 'reject_unauth_pipelining'
 
+#####  `inet_interfaces`
+
+String. Value of the inet_interfaces parameter. The IP
+where the server listens on.
+Default: 'all' 
+
+#####  `inet_protocols`
+
+String. Value of the inet_protocols parameter. 
+Default: 'ipv4' 
+
+#####  `myhostname`
+
+String. Value of the myhostname parameter. 
+Default: undef
+
+#####  `myorigin`
+
+String. Value of the myorigin parameter. 
+Default: $::domain
+
 ### Private classes
 
 #### Class: `postfix::config`
