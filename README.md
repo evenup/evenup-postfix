@@ -16,7 +16,7 @@ A puppet module to install and configure [postfix](https://www.postfix.org/).
 
 ## Module Description
 
-A puppet module that installs and configures postfix to either accept mail on locahost only and forward it on to a server responsible for sending it to its final destination, or as a server accepting mail and responsible to forwarding it to its final destination. This is to keep this module simple and is not intended to handle mailboxes, spam/av filtering, or any advanced postfix configs, but rather to configure internal email servers for utility purposes.
+A puppet module that installs and configures postfix to either accept mail on localhost only and forward it on to a server responsible for sending it to its final destination, or as a server accepting mail and responsible to forwarding it to its final destination. This is to keep this module simple and is not intended to handle mailboxes, spam/av filtering, or any advanced postfix configs, but rather to configure internal email servers for utility purposes.
 
 
 ## Setup
